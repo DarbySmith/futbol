@@ -10,7 +10,7 @@ class StatTracker
     @game = Game.new(@games_data)
     @league = League.new(@teams_data, @game_teams_data)
     @season = Season.new(@teams_data, @game_teams_data)
-    @team = Team.new(@teams_data, @game_teams_data, @games_data)
+    @team = Team.new(@games_data, @teams_data, @game_teams_data)
   end
 
   def self.from_csv(locations)
