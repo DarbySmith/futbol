@@ -264,7 +264,7 @@ RSpec.describe League do
         "13" => 0    
       }
       expect(@league.team_goal_average).to eq(team_with_goal_average)
-      expect(@league.team_name_from_id_average(["16", 3.333])).to eq("New England Revolution")
+      expect(@league.team_name_from_team_id(["16", 3.333])).to eq("New England Revolution")
     end
   end
 end
