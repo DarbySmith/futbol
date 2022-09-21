@@ -1,7 +1,7 @@
 require 'csv'
 require 'pry'
 class StatTracker
-  attr_reader :games_data, :teams_data, :game_teams_data
+  attr_reader :games_data, :teams_data, :game_teams_data, :game, :league, :season, :team
 
   def initialize(locations)
     @games_data = CSV.read(locations[:games], headers: true, header_converters: :symbol)
