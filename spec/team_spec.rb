@@ -1,6 +1,5 @@
 require 'spec_helper'
-require 'team'
-require 'league'
+
 RSpec.describe Team do
   before(:all) do
     game_path = './data/games.csv'
@@ -15,7 +14,7 @@ RSpec.describe Team do
     @teams_data = CSV.read(locations[:teams], headers: true, header_converters: :symbol)
     @game_teams_data = CSV.read(locations[:game_teams], headers: true, header_converters: :symbol)
     @games_data = CSV.read(locations[:games], headers: true, header_converters: :symbol)
-    @team = Team.new(@teams_data, @game_teams_data, @games_data)
+    @team = Team.new(@games_data, @teams_data, @game_teams_data)
   end
 
   describe '#team statistics' do

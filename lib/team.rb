@@ -1,14 +1,14 @@
 require './lib/futbol_data.rb'
 require './lib/id.rb'
 
-class Team
+class Team < FutbolData
   include Id
-  attr_reader :team_data, :game_teams_data, :games_data
 
-  def initialize(teams_data, game_teams_data, games_data)
-    @teams_data = teams_data
-    @game_teams_data = game_teams_data
+  attr_reader :games_data
+
+  def initialize(games_data, teams_data, game_teams_data)
     @games_data = games_data
+    super(teams_data, game_teams_data)
   end
 
   def team_info(index)
