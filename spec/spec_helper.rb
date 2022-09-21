@@ -8,4 +8,3 @@ require './lib/league'
 require './lib/season'
 require './lib/game'
 require './lib/team'
-

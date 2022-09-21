@@ -1,6 +1,5 @@
 require 'spec_helper'
-require 'team'
-require 'league'
+
 RSpec.describe Team do
   before(:all) do
     game_path = './data/games.csv'
@@ -15,9 +14,10 @@ RSpec.describe Team do
     @teams_data = CSV.read(locations[:teams], headers: true, header_converters: :symbol)
     @game_teams_data = CSV.read(locations[:game_teams], headers: true, header_converters: :symbol)
     @games_data = CSV.read(locations[:games], headers: true, header_converters: :symbol)
-    @team = Team.new(@teams_data, @game_teams_data, @games_data)
+    @team = Team.new(@games_data, @teams_data, @game_teams_data)
   end
-  describe 'team statistics' do
+
+  describe '#team statistics' do
     it 'can make a hash with key/value pairs for the following attributes' do
       expected = {
         'team_id' => '18',
@@ -128,6 +128,12 @@ RSpec.describe Team do
     end
   end
 
+  describe '#team_name_from_team_id' do
+    it 'returns the team name for the given array of team id and average goals' do
+      expect(@team.team_name_from_team_id(["14"])).to eq("DC United")
+    end
+  end
+  
   describe 'Team statistics-best & worse season methods'do
     it "#season" do
       expect(@team.season).to eq(["20122013", "20162017", "20142015", "20152016", "20132014", "20172018"])
@@ -147,6 +153,7 @@ RSpec.describe Team do
 
     it "#worst_season" do
       expect(@team.worst_season("6")).to eq("20142015")
+
     end
   end
 end

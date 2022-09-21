@@ -236,7 +236,7 @@ RSpec.describe League do
     end
   end
 
-  describe '#team_name_from_id_average' do
+  describe '#team_name_from_team_id' do
     it 'returns the team name for the given array of team id and average goals' do
       team_with_goal_average = {
         "6" => 2.6,    
@@ -264,7 +264,7 @@ RSpec.describe League do
         "13" => 0    
       }
       expect(@league.team_goal_average).to eq(team_with_goal_average)
-      expect(@league.team_name_from_id_average(["16", 3.333])).to eq("New England Revolution")
+      expect(@league.team_name_from_team_id(["16", 3.333])).to eq("New England Revolution")
     end
   end
 end

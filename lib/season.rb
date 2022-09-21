@@ -1,6 +1,9 @@
 require './lib/futbol_data.rb'
+require './lib/id.rb'
 
 class Season < FutbolData
+  include Id
+
   def winningest_coach(campaign)
     game_results_percentage = Hash.new
 
@@ -70,15 +73,6 @@ class Season < FutbolData
       team_total_tackles[row[:team_id]] += tackles
     end
     team_total_tackles
-  end
-
-  # helper method from Darby - team_id used to find team name
-  def team_name_from_team_id(data)
-    @teams_data.find do |row|
-      if data[0] == row[:team_id]
-        return row[:teamname]
-      end
-    end
   end
 
   #collects all rows within the given campaign

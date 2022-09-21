@@ -1,14 +1,16 @@
-require_relative 'id.rb'
+require './lib/futbol_data.rb'
+require './lib/id.rb'
 require_relative 'sucess_rate.rb'
-include Id
-include SuccessRate
-class Team
-  attr_reader :team_data, :game_teams_data, :games_data
 
-  def initialize(teams_data, game_teams_data, games_data)
-    @teams_data = teams_data
-    @game_teams_data = game_teams_data
+class Team < FutbolData
+  include Id
+  include SuccessRate
+  
+  attr_reader :games_data
+
+  def initialize(games_data, teams_data, game_teams_data)
     @games_data = games_data
+    super(teams_data, game_teams_data)
   end
 
   def team_info(index)
@@ -88,7 +90,7 @@ class Team
         min_win_rate_team = key
       end
     end
-    team_name_from_id_average(min_win_rate_team.split)
+    team_name_from_team_id(min_win_rate_team.split)
   end
 
   def rival(team)
@@ -106,7 +108,7 @@ class Team
         max_win_rate_team = key
       end
     end
-    team_name_from_id_average(max_win_rate_team.split)
+    team_name_from_team_id(max_win_rate_team.split)
   end
 
   def win_loss_hashes(team)
