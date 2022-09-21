@@ -3,6 +3,7 @@ require './lib/id.rb'
 
 class League < FutbolData
   include Id
+  
   def count_of_teams
     @teams_data.count 
   end
@@ -78,12 +79,4 @@ class League < FutbolData
     end
     team_average
   end
-
-  # def team_name_from_team_id(average)
-  #   @teams_data.each do |row|
-  #     if average[0] == row[:team_id]
-  #       return row[:teamname]
-  #     end
-  #   end
-  # end
 end

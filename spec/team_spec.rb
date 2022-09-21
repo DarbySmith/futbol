@@ -17,7 +17,8 @@ RSpec.describe Team do
     @games_data = CSV.read(locations[:games], headers: true, header_converters: :symbol)
     @team = Team.new(@teams_data, @game_teams_data, @games_data)
   end
-  describe 'team statistics' do
+
+  describe '#team statistics' do
     it 'can make a hash with key/value pairs for the following attributes' do
       expected = {
         'team_id' => '18',
@@ -125,6 +126,12 @@ RSpec.describe Team do
         "17"=>5,
         "53"=>9}]
       expect(@team.win_loss_hashes("18")).to eq(rival_stats)
+    end
+  end
+
+  describe '#team_name_from_team_id' do
+    it 'returns the team name for the given array of team id and average goals' do
+      expect(@team.team_name_from_team_id(["14"])).to eq("DC United")
     end
   end
 end

@@ -236,7 +236,7 @@ RSpec.describe League do
     end
   end
 
-  describe '#team_name_from_id_average' do
+  describe '#team_name_from_team_id' do
     it 'returns the team name for the given array of team id and average goals' do
       team_with_goal_average = {
         "6" => 2.6,    
